@@ -49,7 +49,7 @@ kind=server
 
 if [ $# -ne 2 ]; then
 	kind=server
-	host=$(hostname -f)
+	host=$(hostname)
 	if [ -n "$1" ]; then
 		host="$1"
 	fi
@@ -91,7 +91,7 @@ function maxdays() {
 }
 
 function getipaddresses() {
-	/sbin/ifconfig |
+	/sbin/ip |
 		grep -v tunnel |
 		sed -En '/inet6? /p' |
 		sed -Ee 's/inet6? (addr:)?//' |
