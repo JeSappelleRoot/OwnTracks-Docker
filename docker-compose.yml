@@ -1,0 +1,56 @@
+version: "3.7"
+services:
+
+# Mosquitto DB config
+  mqtt:
+    build:
+      context: ./mosquitto
+      args:
+        DB_USER: dbo
+        DB_PASSWORD : Passw0rd
+    container_name: mqtt
+    hostname: mqtt
+    volumes:
+      - ./mosquitto/TLS:/etc/mosquitto/TLS
+    expose:
+      - "8883"
+    ports:
+      - "8883:8883"
+
+# ot-recorder config
+  ot-recorder:
+    depends_on:
+      - mqtt
+    build: 
+      context: ./ot-recorder
+      args:
+        DB_USER: dbo
+        DB_PASSWORD: Passw0rd
+    container_name: ot-recorder
+    hostname: ot-recorder
+    volumes:
+      - ./ot-recorder/CA:/etc/owntracks
+    expose:
+      - "8083"
+
+# Reverse proxy config, with Nginx
+  reverse_proxy:
+    depends_on:
+      - mqtt
+      - ot-recorder
+    build: 
+      context : ./nginx/
+      args: 
+        PROXY_USER: admin
+        PROXY_PASSWORD: Passw0rd
+    container_name: reverse_proxy
+    hostname: proxy
+    volumes:
+      - ./nginx/TLS:/etc/nginx/TLS
+
+
+    ports:
+      - "80:80"
+      - "443:443"
+
+
