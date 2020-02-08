@@ -91,7 +91,7 @@ function maxdays() {
 }
 
 function getipaddresses() {
-	/sbin/ip |
+	/sbin/ip a |
 		grep -v tunnel |
 		sed -En '/inet6? /p' |
 		sed -Ee 's/inet6? (addr:)?//' |
