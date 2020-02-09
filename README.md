@@ -14,7 +14,7 @@
 
 **Owntracks can only be used on Debian x64 bits version**
 
-On your host/virtual machine, just run following commands : 
+On your host/virtual machine, just run the following commands : 
 ```
 apt-get update
 apt-get install -y openssl git docker.io docker-compose
