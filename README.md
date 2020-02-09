@@ -57,7 +57,7 @@ Then, transfer the CA file `./ot-recorder/CA/ca.crt` to your smartphone. This fi
 
 ## Launch Owntracks application
 
-Simply run `docker-compose up` and let the magic operate !  
+Simply run `docker-compose up` and let the magic happen !  
 > Your Owntracks application will be available with your virtual machine IP address  
 > Use `docker-compose up -d` to launch containers in detach mode
 
