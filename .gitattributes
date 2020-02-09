@@ -1,1 +1,2 @@
 static/* linguist-vendored
+*.yml linguist-language=Yaml
