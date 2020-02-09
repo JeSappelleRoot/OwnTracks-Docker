@@ -22,4 +22,4 @@ sed -i 's/# OTR_HOST="localhost"/OTR_HOST="mqtt"/' /etc/default/ot-recorder && \
 sed -i "s/# OTR_PASS=\"\"/OTR_PASS=\"$DB_PASSWORD\"/" /etc/default/ot-recorder && \ 
 sed -i 's/# OTR_CAFILE=""/OTR_CAFILE="\/etc\/owntracks\/ca.crt"/' /etc/default/ot-recorder
 
-CMD ["ot-recorder", "owntracks/#']
+CMD ["ot-recorder", "owntracks/#"]
